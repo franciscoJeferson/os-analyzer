@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>OS Analyzer</title>
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+</head>
+<body>
+  <section
+    class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">OS Analizer</h1>
+        <p class="lead text-muted">
+          É um analisador de sistemas operacionais(Arquitetura, memória, CPU e várias outras unidades que compõem um sistema operacional), mas também verifica o DNS de sites.
+        <p>
+          <a href="#os-analyzer" class="btn btn-primary my-2">Analisar sistema operaconal</a>
+          <a href="#dns-analyzer" class="btn btn-secondary my-2">Analisar DNS de sites</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section
+    class="py-5 text-center container" 
+    id="os-analyzer">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" colspan="4">Dados do sistema operacional
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Sistema operacional original</td>
+          <td><%=oos%></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Plataforma</td>
+          <td><%=platform%></td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Tempo de atividade do sistema operacional</td>
+          <td><%=uptime%>min</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>Endereço IP</td>
+          <td><%=ip%></td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>Hostname</td>
+          <td><%=hostname%></td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>Tipo</td>
+          <td><%=type%></td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td>Arquitetura</td>
+          <td><%=arch%></td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>Espaço total do drive</td>
+          <td><%=drive_info.totalGb%>Gb</td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td>Espaço usado do drive</td>
+          <td><%=drive_info.usedGb%>Gb</td>
+        </tr>
+        <tr>
+          <th scope="row">10</th>
+          <td>Espaço livre do drive</td>
+          <td><%=drive_info.freeGb%>Gb</td>
+        </tr>
+        <tr>
+          <th scope="row">11</th>
+          <td>Espaço usado do drive</td>
+          <td><%=drive_info.usedPercentage%>%</td>
+        </tr>
+        <tr>
+          <th scope="row">12</th>
+          <td>Espaço livre do drive</td>
+          <td><%=drive_info.freePercentage%>%</td>
+        </tr>
+        <tr>
+          <th scope="row">13</th>
+          <td>Espaço total da memória</td>
+          <td><%=(memory_info.totalMemMb / 1024).toFixed(2)%>Gb</td>
+        </tr>
+        <tr>
+          <th scope="row">14</th>
+          <td>Espaço usado da memória</td>
+          <td><%=(memory_info.usedMemMb / 1024).toFixed(2)%>Gb</td>
+        </tr>
+        <tr>
+          <th scope="row">15</th>
+          <td>Espaço livre da memória</td>
+          <td><%=(memory_info.freeMemMb / 1024).toFixed(2)%>Gb</td>
+        </tr>
+        <tr>
+          <th scope="row">17</th>
+          <td>Espaço livre da memória</td>
+          <td><%=memory_info.freeMemPercentage%>%</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section
+    class="py-5 text-center container" 
+    id="dns-analyzer">
+    <form action="/dns" method="post">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Endereço do site</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="address" placeholder="google.com">
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="submit">Verificar DNS</button>
+      </div>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" colspan="4">Dados do DNS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Endereço IP</td>
+          <td><%=dns_address%></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Família</td>
+          <td>IPV<%=dns_family%></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <script src="javascripts/bootstrap.bundle.min.js.js"></script>
+</body>
+</html>
