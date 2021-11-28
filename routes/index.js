@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const os_utils = require('node-os-utils')
+const node_os = require('os')
+const process = require('process')
 const os = require('node-os-utils').os
 const drive = require('node-os-utils').drive
 const memory = require('node-os-utils').mem
@@ -10,25 +11,31 @@ let dns_family = ''
 
 router.get('/', function(req, res, next) {
   ( async () => {
-    const oos = await os.oos()
-    const platform = await os.platform()
-    const uptime = await (os_utils.os.uptime() / 60).toFixed(2)
-    const ip = await os.ip()
-    const hostname = await os.hostname()
-    const type = await os.type()
-    const arch = await os.arch()
-    const drive_info = await drive.info()
-    const memory_info = await memory.info()
+    const arch = await node_os.arch()
+    const freemem = await (node_os.freemem()/1024)/1024
+    const totalmem = await (node_os.totalmem()/1024)/1024
+    const usagemem = await totalmem - freemem
+    const homedir = await node_os.homedir()
+    const hostname = await node_os.hostname()
+    const networkInterfaces = await JSON.stringify(node_os.networkInterfaces())
+    const platform = await node_os.platform()
+    const tmpdir = await node_os.tmpdir()
+    const type = await node_os.type()
+    const uptime = await (node_os.uptime() / 60).toFixed(2)
+    const user = await node_os.userInfo()
     res.render('index', {
-      oos: oos,
-      platform: platform,
-      uptime: uptime,
-      ip: ip,
-      hostname: hostname,
-      type: type,
       arch: arch,
-      drive_info: drive_info,
-      memory_info: memory_info,
+      totalmem: totalmem,
+      freemem: freemem,
+      usagemem: usagemem,
+      homedir: homedir,
+      hostname: hostname,
+      networkInterfaces: networkInterfaces,
+      platform: platform,
+      tmpdir: tmpdir,
+      type: type,
+      uptime: uptime,
+      user: user,
       dns_address: dns_address,
       dns_family: dns_family
     })

@@ -35,83 +35,63 @@
       <tbody>
         <tr>
           <th scope="row">1</th>
-          <td>Sistema operacional original</td>
-          <td><%=oos%></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Plataforma</td>
-          <td><%=platform%></td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Tempo de atividade do sistema operacional</td>
-          <td><%=uptime%>min</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Endereço IP</td>
-          <td><%=ip%></td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td>Hostname</td>
-          <td><%=hostname%></td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>Tipo</td>
-          <td><%=type%></td>
-        </tr>
-        <tr>
-          <th scope="row">7</th>
           <td>Arquitetura</td>
           <td><%=arch%></td>
         </tr>
         <tr>
+          <th scope="row">2</th>
+          <td>Espaço total da memória</td>
+          <td><%=(totalmem / 1024).toFixed(2)%>Gb</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Espaço usado da memória</td>
+          <td><%=(usagemem / 1024).toFixed(2)%>Gb</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>Espaço livre da memória</td>
+          <td><%=(freemem / 1024).toFixed(2)%>Gb</td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>Porcentagem de memória usada</td>
+          <td><%= ((usagemem/totalmem)*100).toFixed(2)%>%</td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>Diretorio home</td>
+          <td><%=homedir%></td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td>Hostname</td>
+          <td><%=hostname%></td>
+        </tr>
+        <tr>
           <th scope="row">8</th>
-          <td>Espaço total do drive</td>
-          <td><%=drive_info.totalGb%>Gb</td>
+          <td>Placas de rede</td>
+          <td style="max-width: 200px; overflow-x: auto; text-align: start;"><%=networkInterfaces%></td>
         </tr>
         <tr>
           <th scope="row">9</th>
-          <td>Espaço usado do drive</td>
-          <td><%=drive_info.usedGb%>Gb</td>
+          <td>Plataforma</td>
+          <td><%=platform%></td>
         </tr>
         <tr>
           <th scope="row">10</th>
-          <td>Espaço livre do drive</td>
-          <td><%=drive_info.freeGb%>Gb</td>
+          <td>Tempo de atividade do sistema operacional</td>
+          <td><%=uptime%>Min</td>
         </tr>
         <tr>
           <th scope="row">11</th>
-          <td>Espaço usado do drive</td>
-          <td><%=drive_info.usedPercentage%>%</td>
+          <td>Pasta de arquivos temporarios</td>
+          <td><%=tmpdir%></td>
         </tr>
         <tr>
           <th scope="row">12</th>
-          <td>Espaço livre do drive</td>
-          <td><%=drive_info.freePercentage%>%</td>
-        </tr>
-        <tr>
-          <th scope="row">13</th>
-          <td>Espaço total da memória</td>
-          <td><%=(memory_info.totalMemMb / 1024).toFixed(2)%>Gb</td>
-        </tr>
-        <tr>
-          <th scope="row">14</th>
-          <td>Espaço usado da memória</td>
-          <td><%=(memory_info.usedMemMb / 1024).toFixed(2)%>Gb</td>
-        </tr>
-        <tr>
-          <th scope="row">15</th>
-          <td>Espaço livre da memória</td>
-          <td><%=(memory_info.freeMemMb / 1024).toFixed(2)%>Gb</td>
-        </tr>
-        <tr>
-          <th scope="row">17</th>
-          <td>Espaço livre da memória</td>
-          <td><%=memory_info.freeMemPercentage%>%</td>
+          <td>Nome do usuario</td>
+          <td><%=user.username%></td>
         </tr>
       </tbody>
     </table>
